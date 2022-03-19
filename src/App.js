@@ -1,11 +1,22 @@
+import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const [state,setState] = useState(['a','b'])
+
+  const handleClickButton = () => {
+    setState([...state,'c'])
+    console.log([...state])
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <button onClick={handleClickButton}>add</button>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
