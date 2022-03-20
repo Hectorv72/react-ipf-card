@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './TagInput.css'
 
-const TagInput = ({ required = false, min = 0, max = 99999, onChange = null, suggestions = [], strict = false }) => {
+const TagInput = ({ required = false, min = 0, max = 99999, onChange = null, suggestions = [], strict = false, ...props }) => {
   const [tags, setTags] = useState([])
   const [input, setInput] = useState('')
   const [opSuggestions, setOpSuggestions] = useState([])
@@ -127,7 +127,7 @@ const TagInput = ({ required = false, min = 0, max = 99999, onChange = null, sug
   }, [suggestions])
 
   return (
-    <div className={`form-control d-flex bd-highlight flex-wrap ${alert}`}>
+    <div className={`form-control d-flex bd-highlight flex-wrap ${alert}`} {...props}>
 
       {
         [...tags].map((tag, key) =>

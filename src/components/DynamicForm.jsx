@@ -7,8 +7,16 @@ const DynamicForm = (props) => {
     max = null,
     component: Component, // componente que se duplicará
     onChange = null, // retorna la lista de objetos de con los atributos de cada formulario
+    containerClass = null,
+    containerStyle = null,
+    showButton = true,
+    buttonPosition = 'bottom' || 'top',
     buttonClass = 'btn btn-primary',
-    buttonText = '+'
+    buttonStyle = null,
+    buttonContainerClass = null,
+    buttonContainerStyle = null,
+    buttonText = '+',
+    ...rest
   } = props
 
   const [forms, setForms] = useState([])
@@ -30,10 +38,17 @@ const DynamicForm = (props) => {
   // Funcion para crear un form
   const createObjectForm = () => {
     const id = randomString(8)
+
+    // let formatedComponent = Component
+    // if (typeof Component === 'function') {
+    //   formatedComponent = <Component />
+    // }
+
     return {
       id,
       state: {},
-      form: <Component key={`dynamic-form-${id}`} updateForm={(data) => { setUpdated({ id, data }) }} deleteForm={() => { setDeleted(id) }} />
+      // form: <Component key={`dynamic-form-${id}`} updateForm={(data) => { setUpdated({ id, data }) }} deleteForm={() => { setDeleted(id) }} />
+      form: { ...Component, key: `dynamic-form-${id}`, props: { ...Component.props, updateForm: (data) => { setUpdated({ id, data }) }, deleteForm: () => { setDeleted(id) } } }
     }
   }
 
@@ -119,17 +134,28 @@ const DynamicForm = (props) => {
   }, [data])
 
   return (
-    <>
+    <div {...rest} >
       {
-        forms.map(
-          element =>
-            element.form
-        )
+        buttonPosition === 'top' && showButton &&
+        <div className={buttonContainerClass} style={buttonContainerStyle}>
+          <button type="button" onClick={handleAddForm} className={buttonClass} style={buttonStyle} >{buttonText}</button>
+        </div>
       }
-      <div>
-        <button onClick={handleAddForm} className={buttonClass}>{buttonText}</button>
+      <div className={containerClass} style={containerStyle}>
+        {
+          forms.map(
+            element =>
+              element.form
+          )
+        }
       </div>
-    </>
+      {
+        buttonPosition === 'bottom' && showButton &&
+        <div className={buttonContainerClass} style={buttonContainerStyle}>
+          <button type="button" onClick={handleAddForm} className={buttonClass} style={buttonStyle} >{buttonText}</button>
+        </div>
+      }
+    </div>
   )
 }
 

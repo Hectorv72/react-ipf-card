@@ -9,7 +9,7 @@ const Comp = ({ updateForm, deleteForm }) => {
         <Card.Body>
           <Row className="mb-2">
             <Col className="mb-2" xs={12}>
-              <input className="form-control" type="file" />
+              <input onChange={(e) => updateForm(e.target.value)} className="form-control" type="file" />
             </Col>
             <Col>
               <div className="d-flex justify-content-center">
@@ -31,7 +31,7 @@ const TestPage = () => {
   return (
     <div className="my-4 mx-3">
       <Row className="g-2 mb-2">
-        <DynamicForm onChange={handle} initCount={2} min={1} max={12} component={Comp} buttonText="Más" />
+        <DynamicForm onChange={handle} component={<Comp />} buttonContainerClass={'d-flex justify-content-center'} buttonPosition="top" />
       </Row>
     </div>
   )

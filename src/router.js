@@ -4,7 +4,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom'
-import { ScanPage, TestPage } from './pages'
+import { ScanPage, TestPage, CreateCard } from './pages'
 const Routing = () => {
   // const session = useContext(SessionContext)[0]
 
@@ -12,7 +12,9 @@ const Routing = () => {
     <Router>
       <Routes>
         <Route path="/" element={<ScanPage />} />
+        <Route path="/scanner" element={<ScanPage />} />
         <Route path="/test" element={<TestPage />} />
+        <Route path="/create" element={<CreateCard />} />
       </Routes>
     </Router>
   )
