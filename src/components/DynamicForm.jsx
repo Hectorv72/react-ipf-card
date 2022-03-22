@@ -126,8 +126,9 @@ const DynamicForm = (props) => {
 
   // Ejecuta la acción de envio de datos
   useEffect(() => {
-    if (data.length > 1) {
+    if (data.length > 0) {
       if (onChange !== null) {
+        // console.log(data)
         onChange(data)
       }
     }

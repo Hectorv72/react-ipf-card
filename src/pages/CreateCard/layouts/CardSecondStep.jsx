@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 
 const CardSecondStep = ({ nextStep, previousStep, data, setData }) => {
@@ -10,7 +9,7 @@ const CardSecondStep = ({ nextStep, previousStep, data, setData }) => {
   ]
   // const [tags, setTags] = useState([])
   return (
-    <div className="container">
+    <div className="container-fluid px-1">
       <h4>Necesitamos saber más sobre ti...</h4>
       <form>
 
@@ -18,7 +17,7 @@ const CardSecondStep = ({ nextStep, previousStep, data, setData }) => {
 
           <Col xs={6} className="mb-3" >
             <label htmlFor="nombre">Sexo:</label>
-            <select defaultValue={data.sex || ''} className="form-select">
+            <select name="sex" defaultValue={data.sex || ''} onChange={setData} className="form-select">
               <option disabled readOnly>Seleccione</option>
               {
                 sexs.map(
@@ -30,13 +29,13 @@ const CardSecondStep = ({ nextStep, previousStep, data, setData }) => {
           </Col>
 
           <Col xs={6} className="mb-3" >
-            <label htmlFor="nombre">Telefono:</label>
-            <input name="phone" onChange={setData} type="tel" className="form-control" value={data.phone || ''} />
+            <label htmlFor="nombre">Telefono:(opcional)</label>
+            <input name="phone" placeholder="+54 **********" onChange={setData} type="tel" className="form-control" value={data.phone || ''} />
           </Col>
 
           <Col xs={12} className="mb-3">
-            <label htmlFor="about">Sobre mi:</label>
-            <textarea id="about" className="form-control" defaultValue={data.about || ''}></textarea>
+            <label htmlFor="about">Sobre mi:(opcional)</label>
+            <textarea id="about" placeholder="Soy bueno en..." className="form-control" defaultValue={data.about || ''}></textarea>
           </Col>
 
         </Row>

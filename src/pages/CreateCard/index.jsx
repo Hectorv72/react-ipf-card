@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { Card, Container, Row, Col } from 'react-bootstrap'
+import { Card, Container } from 'react-bootstrap'
 import { useLocation, useNavigate } from 'react-router-dom'
 import StepWizard from 'react-step-wizard'
-import CardFirstStep from './layouts/CardFirstStep'
-import CardSecondStep from './layouts/CardSecondStep'
-import CardThirdStep from './layouts/CardThirdStep'
+import CardSteps from './layouts/CardSteps'
+import CardFinalView from './layouts/CardFinalView'
+import './css/style.css'
 // import user from '../resources/usuario.png'
 
 const CreateCard = () => {
@@ -18,14 +18,26 @@ const CreateCard = () => {
       const list = {
         name: location.state.name,
         dni: location.state.dni,
-        degree: 'DESARROLLADOR DE SOFTWARE MULTIPLATAFORMA',
-        grade: ''
+        degree: 'TECNICATURA SUPERIOR EN DESARROLLO DE SOFTWARE MULTIPLATAFORMA',
+        grade: '1ro',
+        year_entry: '2021',
+        // another data
+        about: '',
+        sex: '',
+        phone: '',
+        knowledges: [],
+        social: [],
+        academic: []
       }
       setData({ ...list })
     } else {
       navigate('/scanner')
     }
   }, [])
+
+  useEffect(() => {
+    // console.log(data)
+  }, [data])
   // const hadleSaveStudent = async (e) => {
   //   e.preventDefault()
   //   try {
@@ -58,21 +70,10 @@ const CreateCard = () => {
     <Container className="my-2">
       <Card>
         <Card.Body>
-          <Row>
-            <Col xs={12} md={3} className="d-flex justify-content-center align-items-center">
-              {/* <img alt="aa" src={user} style={{ width: '100%' }} /> */}
-              <img alt="ipf" src={'https://www.ipf.edu.ar/img/logo_institucional.jpg'} style={{ width: '200px' }} />
-            </Col>
-            <Col>
-              <StepWizard >
-                <CardFirstStep data={data} setData={handleSetData} />
-                <CardSecondStep data={data} setData={handleSetData} />
-                <CardThirdStep data={data} setData={handleSetData} />
-              </StepWizard>
-            </Col>
-          </Row>
-          <Col>
-          </Col>
+          <StepWizard>
+            <CardSteps data={data} setData={handleSetData} />
+            <CardFinalView data={data} setData={handleSetData} />
+          </StepWizard>
         </Card.Body>
       </Card>
     </Container>
