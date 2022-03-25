@@ -10,6 +10,8 @@ const Scanner = ({ onScan = null, ...props }) => {
   }
 
   const handleFormatScan = (read) => {
+    console.log(read)
+    console.log(read.rawBytes.toString().replaceAll(',', ''))
     if (read) {
       const splited = read.text.split('\n')
 

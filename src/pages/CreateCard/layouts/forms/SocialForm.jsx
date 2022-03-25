@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import Select from 'react-select'
 import { FaTrash } from 'react-icons/fa'
-import SocialData from '../data/social.data'
+import SocialData from '../../data/social.data'
 
 const SocialForm = ({ updateForm, deleteForm, ...props }) => {
   const [state, setState] = useState({ label: '', value: '' })

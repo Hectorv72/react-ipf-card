@@ -1,24 +1,24 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { Accordion, Col, Row } from 'react-bootstrap'
-import SocialData from '../data/social.data'
+import SocialData from '../../../pages/CreateCard/data/social.data'
 
 const CardViewBack = ({ data, ...props }) => {
   return (
-    <Row className="gy-3">
+    <Row className="card p-2">
       {
         data.about &&
-        <Col xs={12}>
-          <label htmlFor="about" className="fw-bold">Sobre mi</label>
-          <div id="about">{data.about || 'Esperando datos'}</div>
+        <Col xs={12} className="mb-3">
+          <label htmlFor="about" className="fw-bold" >Sobre mi:</label>
+          <div id="about" >{data.about || 'Esperando datos'}</div>
         </Col>
       }
 
       {
         data?.knowledges?.length > 0 &&
-        <Col xs={12}>
-          <label htmlFor="about" className="fw-bold">Conocimientos</label>
-          <div id="about">
+        <Col xs={12} className="mb-3" >
+          <label htmlFor="knowledges" className="fw-bold" >Conocimientos</label>
+          <div id="knowledges">
             {
               data.knowledges.map(
                 (element, key) =>

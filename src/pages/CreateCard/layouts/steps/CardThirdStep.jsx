@@ -1,9 +1,9 @@
 
 import React, { useEffect, useState } from 'react'
 import { Row, Col, Accordion } from 'react-bootstrap'
-import { DynamicForm } from '../../../components'
-import SocialForm from './SocialForm'
-import AcademicForm from './AcademicForm'
+import { DynamicForm } from '../../../../components'
+import SocialForm from '../forms/SocialForm'
+import AcademicForm from '../forms/AcademicForm'
 // import Select from 'react-select'
 import CreatableSelect from 'react-select/creatable'
 
